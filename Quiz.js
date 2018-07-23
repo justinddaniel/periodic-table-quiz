@@ -71,7 +71,7 @@ function welcome() {
 function chooseQuiz() {
 	response = parseInt(window.prompt("Select one of these quiz types: 1. Symbol of first 20 elements, 2. Symbol of first 56 elements, 3. Symbol of all 118 named elements. (Type 1, 2, or 3)"))
 	if (response === 'number' && response < 4 && response > 0) {
-		return quizElementNames(response) 
+		return quizChoice(response) 
 	} 
 	else {
 		window.alert("You must type 1, 2, or 3 for quiz choice");
@@ -79,11 +79,41 @@ function chooseQuiz() {
 	}
 }
 
-function quizElementNames(response) {
+function quizChoice(response) {
 	switch(response) {
 		case 1:
-			generateRandom = Math.ceil(Math.random * 20);
+			generateRandom = Math.floor(Math.random * 20);
+			return quizElements(generateRandom);
+			break;
+		case 2:
+			generateRandom = Math.floor(Math.random * 56);
+			return quizElements(generateRandom);
+			break;
+		case 3:
+			generateRandom = Math.floor(Math.random * 118);
+			return quizElements(generateRandom);
+			break;
+		default:
+			window.alert("invalid selection. Quiz choice must be 1, 2, or 3.");
+			return welcome();
+	}
+}
 
+function quizElements(generateRandom) {
+	let answerKey = elementNamesArray[generateRandom];
+	correctAnswer = nameAndSymbol[answerKey];
+	userAnswer = window.prompt(`What is the symbol for ${answerKey}? (or type "exit" to quit)`)
+	if (userAnswer.toLowerCase() === 'exit') {
+		window.alert('Goodbye!');
+		return null;
+	}
+	else if (userAnswer === correctAnswer) {
+		window.alert("Correct!");
+		return quizChoice(response);
+	}
+	else {
+		window.alert(`That is incorrect. The correct answer is ${correctAnswer}.`);
+		return quizChoice(response);
 	}
 }
 

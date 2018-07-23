@@ -2,6 +2,7 @@
 let correctAnswer;
 let userAnswer;
 let generateRandom;
+let response;
 
 const elementNamesArray = ['hydrogen', 'helium', 'lithium', 'beryllium', 'boron', 'carbon', 'nitrogen', 'oxygen',
 'fluorine', 'neon', 'sodium', 'magnesium', 'aluminum', 'silicon', 'phosphorus', 'sulfur', 'chlorine', 'argon',
@@ -17,12 +18,12 @@ const elementNamesArray = ['hydrogen', 'helium', 'lithium', 'beryllium', 'boron'
 'hassium', 'meitnerium', 'darmstadtium', 'roentgenium', 'copernicium', 'nihonium', 'flerovium', 'moscovium', 'livermorium',
 'tennessine', 'oganesson']
 
-const firstFiftyFour = ['hydrogen', 'helium', 'lithium', 'beryllium', 'boron', 'carbon', 'nitrogen', 'oxygen',
+const firstFiftySix = ['hydrogen', 'helium', 'lithium', 'beryllium', 'boron', 'carbon', 'nitrogen', 'oxygen',
 'fluorine', 'neon', 'sodium', 'magnesium', 'aluminum', 'silicon', 'phosphorus', 'sulfur', 'chlorine', 'argon',
 'potassium', 'calcium', 'scandium', 'titanium', 'vanadium', 'chromium', 'manganese', 'iron', 'cobalt', 'nickel',
 'copper', 'zinc', 'gallium', 'germanium', 'arsenic', 'selenium', 'bromine', 'krypton', 'rubidium', 'strontium',
 'yttrium', 'zirconium', 'niobium', 'molybdenum', 'technetium', 'ruthenium', 'rhodium', 'palladium', 'silver',
-'cadmium', 'indium', 'tin', 'antimony', 'tellerium', 'iodine', 'xenon']
+'cadmium', 'indium', 'tin', 'antimony', 'tellerium', 'iodine', 'xenon', 'caesium', 'barium']
 
 const naturallyOccurring = ['hydrogen', 'helium', 'lithium', 'beryllium', 'boron', 'carbon', 'nitrogen', 'oxygen',
 'fluorine', 'neon', 'sodium', 'magnesium', 'aluminum', 'silicon', 'phosphorus', 'sulfur', 'chlorine', 'argon',
@@ -60,7 +61,29 @@ const nameAndSymbol = {'hydrogen' => 'H', 'helium' => 'He', 'lithium' => 'Li', '
 
 //functions
 
-function quizElementNames() {
-	//
+function welcome() {
+	response = window.prompt("Welcome to the Elements Quiz! Would you like to play the quiz and test your knowledge of the elements? (Y/N)");
+	if (response.toLowerCase() === 'y') { return chooseQuiz(); }
+	else if (response.toLowerCase() === 'n') { window.alert("Goodbye!"; }
+	else { return welcome(); }
+}
+
+function chooseQuiz() {
+	response = parseInt(window.prompt("Select one of these quiz types: 1. Symbol of first 20 elements, 2. Symbol of first 56 elements, 3. Symbol of all 118 named elements. (Type 1, 2, or 3)"))
+	if (response === 'number' && response < 4 && response > 0) {
+		return quizElementNames(response) 
+	} 
+	else {
+		window.alert("You must type 1, 2, or 3 for quiz choice");
+		return ChooseQuiz();
+	}
+}
+
+function quizElementNames(response) {
+	switch(response) {
+		case 1:
+			generateRandom = Math.ceil(Math.random * 20);
+
+	}
 }
 

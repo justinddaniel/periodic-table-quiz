@@ -64,33 +64,33 @@ livermorium:  'Lv', tennessine:  'Ts', oganesson: 'Og'}
 function welcome() {
 	response = window.prompt("Welcome to the Elements Quiz! Would you like to play the quiz and test your knowledge of the elements? (Y/N)");
 	if (response.toLowerCase() === 'y') { return chooseQuiz(); }
-	else if (response.toLowerCase() === 'n') { window.alert("Goodbye!"; }
+	else if (response.toLowerCase() === 'n') { window.alert("Goodbye!"); }
 	else { return welcome(); }
 }
 
 function chooseQuiz() {
 	response = parseInt(window.prompt("Select one of these quiz types: 1. Symbol of first 20 elements, 2. Symbol of first 56 elements, 3. Symbol of all 118 named elements. (Type 1, 2, or 3)"))
-	if (response === 'number' && response < 4 && response > 0) {
+	if (typeof response === 'number' && response < 4 && response > 0) {
 		return quizChoice(response) 
 	} 
 	else {
 		window.alert("You must type 1, 2, or 3 for quiz choice");
-		return ChooseQuiz();
+		return chooseQuiz();
 	}
 }
 
 function quizChoice(response) {
 	switch(response) {
 		case 1:
-			generateRandom = Math.floor(Math.random * 20);
+			generateRandom = Math.floor(Math.random() * 20);
 			return quizElements(generateRandom);
 			break;
 		case 2:
-			generateRandom = Math.floor(Math.random * 56);
+			generateRandom = Math.floor(Math.random() * 56);
 			return quizElements(generateRandom);
 			break;
 		case 3:
-			generateRandom = Math.floor(Math.random * 118);
+			generateRandom = Math.floor(Math.random() * 118);
 			return quizElements(generateRandom);
 			break;
 		default:
